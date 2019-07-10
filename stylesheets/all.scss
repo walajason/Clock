@@ -1,6 +1,6 @@
-        @import "./../../../node_modules/bootstrap/scss/bootstrap.scss";
-        @import "./../../../node_modules/bootstrap/scss/functions";
-        @import "./../stylesheets/variables";
+        @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+        @import "../../../node_modules/bootstrap/scss/functions";
+        @import "../../../node_modules/bootstrap/scss/variables";
         $midnight: #E53935;
         $clouds: #ecf0f1;
         // General
@@ -146,4 +146,28 @@
         .section-font-color {
             color: rgb(16, 52, 214);
             background-color: rgba(240, 36, 36, 0.096)
+        }
+        
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 3.6rem;
+            /* Preferred icon size */
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            color: white;
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
         }
