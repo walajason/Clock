@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -349,4 +350,356 @@
 
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../Clock/stylesheets/all.scss">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="icon" href="../Clock/image/" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>番茄鐘</title>
+
+
+    <style type="text/css">
+        html {
+            font-size: 10px;
+        }
+        
+        .mainbg {
+            position: absolute;
+            background-color: #FFEDF7;
+            width: 1280px;
+            height: 800px;
+        }
+        
+        .bluebox {
+            display: block;
+            background-color: #003164;
+            position: relative;
+            top: 0px;
+            left: 830px;
+            width: 450px;
+            height: 800px;
+        }
+        
+        .inputbox {
+            position: absolute;
+            background-color: #FFFFFF;
+            top: 48px;
+            left: 85px;
+            width: 445px;
+            height: 56px;
+            border: 1px solid;
+            border-color: #FFFFFF;
+            font-family: 'Roboto';
+            font-size: 1.6rem;
+            color: #FF4384;
+            text-align: left;
+            line-height: 57px;
+        }
+        
+        .plus {
+            position: absolute;
+            top: 61px;
+            left: 490px;
+            width: 24px;
+            height: 24px;
+            font-size: 3.2rem;
+            color: #FF4384;
+        }
+        
+        .circur1 {
+            position: absolute;
+            width: 540px;
+            height: 540px;
+            top: 132px;
+            left: 560px;
+            border: 4px solid #FF4384;
+            border-radius: 55%;
+        }
+        
+        .circur2 {
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            top: 145px;
+            left: 574px;
+            background-color: #FF4384;
+            border-radius: 55%;
+        }
+        
+        .circur3 {
+            position: absolute;
+            width: 96px;
+            height: 96px;
+            top: 352px;
+            left: 777px;
+            background-color: white;
+            border-radius: 55%;
+        }
+        
+        .ssmcircur {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: 285px;
+            left: 149px;
+            border: 1px solid #FF4384;
+            border-radius: 55%;
+        }
+        
+        .smcircur1 {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            top: 249px;
+            left: 85px;
+            border: 2px solid black;
+            border-radius: 55%;
+        }
+        
+        .smcirtxt1 {
+            position: absolute;
+            width: 348px;
+            height: 28px;
+            top: 249px;
+            left: 149px;
+            font-family: Roboto;
+            font-size: 2.4rem;
+            font-weight: bold;
+            color: black;
+            text-align: left;
+            white-space: nowrap;
+            /*變換大寫 THE FIRST THING TO DO 變換大寫 */
+        }
+        
+        .smcircur2 {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 610px;
+            left: 85px;
+            border: 2px solid black;
+            border-radius: 55%;
+        }
+        
+        .smcirtxt2 {
+            position: absolute;
+            width: 255px;
+            height: 19px;
+            top: 613px;
+            left: 116px;
+            font-family: Roboto;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: black;
+            text-align: left;
+            white-space: nowrap;
+            /*變換大寫 THE FIRST THING TO DO 變換大寫 */
+        }
+        
+        .cirposit3 {
+            top: 651px;
+            left: 85px;
+        }
+        
+        .cirposit4 {
+            top: 692px;
+            left: 85px;
+        }
+        
+        .txtposit3 {
+            top: 654px;
+            left: 116px;
+            /*變換大寫 THE FIRST THING TO DO 變換大寫 */
+        }
+        
+        .txtposit4 {
+            top: 695px;
+            left: 116px;
+            /*變換大寫 THE FIRST THING TO DO 變換大寫 */
+        }
+        
+        .square {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 426px;
+            left: 888px;
+            background-color: white;
+        }
+        
+        .triangle {
+            position: absolute;
+            top: 375px;
+            left: 816px;
+            border-color: transparent transparent transparent #FF4384;
+            border-style: solid solid solid solid;
+            border-width: 25px;
+            /* 設定 width、height 可更好理解原理 */
+            height: 0px;
+            width: 0px;
+        }
+        
+        .funlist {
+            position: absolute;
+            top: 48px;
+            left: 1159px;
+            width: 36px;
+            height: 36px;
+        }
+        
+        .insertchart {
+            position: absolute;
+            top: 132px;
+            left: 1159px;
+            width: 36px;
+            height: 36px;
+        }
+        
+        .music {
+            position: absolute;
+            top: 216px;
+            left: 1159px;
+            width: 36px;
+            height: 36px;
+        }
+        
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 3.6rem;
+            /* Preferred icon size */
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            color: white;
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+        
+        .material-play-color {
+            color: black;
+            white-space: nowrap;
+        }
+        
+        .pomo {
+            position: absolute;
+            width: 165px;
+            height: 36px;
+            top: 587px;
+            left: 1020px;
+            color: white;
+            writing-mode: vertical-rl;
+            font-family: Futura;
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+        
+        .bignumber {
+            position: absolute;
+            width: 454px;
+            height: 206px;
+            top: 297px;
+            left: 80px;
+            color: #FF4384;
+            font-family: Roboto;
+            font-size: 17.6rem;
+            font-weight: bold;
+        }
+        
+        .smcirtxt1:hover {
+            text-transform: lowercase;
+        }
+        
+        .smcirtxt2:hover {
+            text-transform: lowercase;
+        }
+        
+        .more {
+            position: absolute;
+            width: 44px;
+            height: 19px;
+            top: 733px;
+            left: 486px;
+            color: #FF4384;
+            font-family: Roboto;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        
+        .more:hover {
+            text-transform: lowercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainbg">
+        <div class="bluebox"></div>
+        <div class="inputbox">ADD A NEW MISSION </div>
+        <div class="plus">+</div>
+        <div class="circur1"></div>
+        <div class="circur2"></div>
+        <div class="circur3"></div>
+        <div class="square"></div>
+        <div class="triangle"></div>
+        <!---->
+        <div class="ssmcircur"></div>
+        <div class="smcircur1"></div>
+        <div class="smcirtxt1">THE FIRST THING TO DO TODAY</div>
+        <div class="bignumber">25:00</div>
+        <div class="smcircur2"></div>
+        <div class="smcirtxt2">THE SECOND THING TO DO TODAY</div>
+        <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
+            <i class="material-icons material-play-color">play_circle_outline</i>
+        </div>
+        <div class="smcircur2 cirposit3"></div>
+        <div class="smcirtxt2 txtposit3">THE THIRD THING TO DO TODAY</div>
+        <div style="position:absolute; width: 24px; height:24px; top:651px; left:506px;">
+            <i class="material-icons material-play-color">play_circle_outline</i>
+        </div>
+        <div class="smcircur2 cirposit4"></div>
+        <div class="smcirtxt2 txtposit4">THE FORTH THING TO DO TODAY</div>
+        <div style="position:absolute; width: 24px; height:24px; top:692px; left:506px;">
+            <i class="material-icons material-play-color">play_circle_outline</i>
+        </div>
+        <div class="more">MORE</div>
+        <a class="funlist " href="# ">
+            <i class="material-icons ">list</i>
+        </a>
+        <a class="insertchart " href="# ">
+            <i class="material-icons ">insert_chart</i>
+        </a>
+        <a class="music " href="# ">
+            <i class="material-icons ">library_music</i>
+        </a>
+        <div class="pomo ">POMODORO</div>
+    </div>
+
+
+</body>
+
+>>>>>>> be34cdc8ba7688170ce90ced8bcec41a7ad598fe
 </html>
