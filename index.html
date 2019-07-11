@@ -305,6 +305,65 @@
         .more:hover {
             text-transform: lowercase;
         }
+
+        .animat {
+            animation: twinkling 0.3s infinite ease-in-out;
+            -webkit-animation: twinkling 5s infinite ease-in-out;
+        }
+
+        @keyframes twinkling {
+
+            /*透明度由0到1*/
+            0% {
+                opacity: 0;
+                /*透明度為0*/
+            }
+
+            25% {
+                opacity: 0.25;
+                /*透明度為1*/
+
+            }
+
+            75% {
+                opacity: 0.75;
+                /*透明度為1*/
+
+            }
+
+            100% {
+                opacity: 1;
+                /*透明度為1*/
+
+            }
+        }
+
+        @-webkit-keyframes twinkling {
+
+            /*透明度由0到1*/
+            0% {
+                opacity: 0;
+                /*透明度為0*/
+            }
+
+            25% {
+                opacity: 0.25;
+                /*透明度為1*/
+
+            }
+
+            75% {
+                opacity: 0.75;
+                /*透明度為1*/
+
+            }
+
+            100% {
+                opacity: 1;
+                /*透明度為1*/
+
+            }
+        }
     </style>
     <script language="JavaScript">
         function ShowTime() {
@@ -323,6 +382,10 @@
                 return mStr;
         }
         /*https://www.youtube.com/audiolibrary/soundeffects?ar=3*/
+        function showanimt() {
+            var obj = document.getElementById("circur2");
+            obj.className = obj.className + ' animat';
+        }
     </script>
 </head>
 
@@ -335,7 +398,7 @@
         <div class="inputbox">ADD A NEW MISSION </div>
         <div class="plus">+</div>
         <div class="circur1"></div>
-        <div class="circur2"></div>
+        <div class="circur2" id="circur2" onclick="showanimt()"></div>
         <div class="circur3"></div>
         <div class="square"></div>
         <div class="triangle"></div>
