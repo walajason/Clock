@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../Clock/stylesheets/all.scss">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" href="../Clock/image/" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <title>番茄鐘</title>
 
     <style type="text/css">
@@ -83,6 +90,10 @@
             background-color: #FF4384;
             border-radius: 55%;
         }
+        /*.circur2:hover {
+            cursor: pointer;
+            background-color: #ffffff;
+        }*/
 
         .circur3 {
             position: absolute;
@@ -271,7 +282,7 @@
             left: 80px;
             color: #FF4384;
             font-family: Roboto;
-            font-size: 17.6rem;
+            font-size: 12.6rem;
             font-weight: bold;
         }
 
@@ -298,16 +309,106 @@
         .more:hover {
             text-transform: lowercase;
         }
+
+        .animat {
+            animation: twinkling 0.3s infinite ease-in-out;
+            -webkit-animation: twinkling 5s infinite ease-in-out;
+        }
+
+        @keyframes twinkling {
+
+            /*透明度由0到1*/
+            0% {
+                opacity: 0;
+                /*透明度為0*/
+            }
+
+            25% {
+                opacity: 0.25;
+                /*透明度為1*/
+
+            }
+
+            75% {
+                opacity: 0.75;
+                /*透明度為1*/
+
+            }
+
+            100% {
+                opacity: 1;
+                /*透明度為1*/
+
+            }
+        }
+
+        @-webkit-keyframes twinkling {
+
+            /*透明度由0到1*/
+            0% {
+                opacity: 0;
+                /*透明度為0*/
+            }
+
+            25% {
+                opacity: 0.25;
+                /*透明度為1*/
+
+            }
+
+            75% {
+                opacity: 0.75;
+                /*透明度為1*/
+
+            }
+
+            100% {
+                opacity: 1;
+                /*透明度為1*/
+
+            }
+        }
     </style>
+    <script language="JavaScript">
+        function ShowTime() {
+            var NowDate = new Date();
+            var h = NowDate.getHours();
+            var m = NowDate.getMinutes();
+            var s = NowDate.getSeconds();
+            document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
+            setTimeout('ShowTime()', 1000);
+        }
+        function paddingLeft(str, lenght) {
+            var mStr = String(str);
+            if (mStr.length < lenght)
+                return "0" + mStr;
+            else
+                return mStr;
+        }
+        /*https://www.youtube.com/audiolibrary/soundeffects?ar=3*/
+        function showanimt() {
+            var obj = document.getElementById("circur2");
+            obj.className = obj.className + ' animat';
+        }
+        function showanimtOff() {
+            /*未能有效果, 需要debug*/
+            var obj = document.getElementById("circur2");
+            obj.animatePlayState=pause;
+        }
+    </script>
 </head>
 
-<body>
+<body onload="ShowTime()">
+    <audio autoplay loop>
+        <source src="../Clock/image/Safety_Net.mp3" type="audio/ogg">
+    </audio>
     <div class="mainbg">
         <div class="bluebox"></div>
         <div class="inputbox">ADD A NEW MISSION </div>
         <div class="plus">+</div>
         <div class="circur1"></div>
-        <div class="circur2"></div>
+        <div class="circur2 animat" id="circur2" onclick="showanimtOff()"></div>
+        <!---->
         <div class="circur3"></div>
         <div class="square"></div>
         <div class="triangle"></div>
@@ -315,7 +416,7 @@
         <div class="ssmcircur"></div>
         <div class="smcircur1"></div>
         <div class="smcirtxt1">THE FIRST THING TO DO TODAY</div>
-        <div class="bignumber">25:00</div>
+        <div class="bignumber" id="showbox"></div>
         <div class="smcircur2"></div>
         <div class="smcirtxt2">THE SECOND THING TO DO TODAY</div>
         <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
@@ -343,6 +444,7 @@
         </a>
         <div class="pomo ">POMODORO</div>
     </div>
+
 </body>
 
 </html>
