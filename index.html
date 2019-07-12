@@ -21,9 +21,21 @@
             font-size: 10px;
         }
         
+        .bluebox2 {
+            display: block;
+            background-color: #003164;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            width: 1730px;
+            height: 800px;
+        }
+        
         .mainbg {
             position: absolute;
             background-color: #FFEDF7;
+            top: 0px;
+            left: 450px;
             width: 1280px;
             height: 800px;
         }
@@ -31,7 +43,7 @@
         .bluebox {
             display: block;
             background-color: #003164;
-            position: relative;
+            position: absolute;
             top: 0px;
             left: 830px;
             width: 450px;
@@ -397,48 +409,50 @@
     <audio id="audio" autoplay loop>
         <source src="./image/How_it_Began.mp3" type="audio/ogg">
     </audio>
-    <div class="mainbg">
-        <div class="bluebox"></div>
-        <div class="inputbox">ADD A NEW MISSION </div>
-        <div class="plus">+</div>
-        <div class="circur1"></div>
-        <!---->
-        <div class="circur2 animat" id="circur2" onclick="showanimt()"></div>
-        <!---->
-        <div class="circur3"></div>
-        <div class="square"></div>
-        <div class="triangle"></div>
-        <!---->
-        <div class="ssmcircur"></div>
-        <div class="smcircur1"></div>
-        <div class="smcirtxt1">THE FIRST THING TO DO TODAY</div>
-        <div class="bignumber" id="showbox"></div>
-        <div class="smcircur2"></div>
-        <div class="smcirtxt2">THE SECOND THING TO DO TODAY</div>
-        <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
-            <i class="material-icons material-play-color">play_circle_outline</i>
+    <div class="bluebox2">
+        <div class="mainbg">
+            <div class="bluebox"></div>
+            <div class="inputbox">ADD A NEW MISSION </div>
+            <div class="plus">+</div>
+            <div class="circur1"></div>
+            <!---->
+            <div class="circur2 animat" id="circur2" onclick="showanimt()"></div>
+            <!---->
+            <div class="circur3"></div>
+            <div class="square"></div>
+            <div class="triangle"></div>
+            <!---->
+            <div class="ssmcircur"></div>
+            <div class="smcircur1"></div>
+            <div class="smcirtxt1">THE FIRST THING TO DO TODAY</div>
+            <div class="bignumber" id="showbox"></div>
+            <div class="smcircur2"></div>
+            <div class="smcirtxt2">THE SECOND THING TO DO TODAY</div>
+            <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
+                <i class="material-icons material-play-color">play_circle_outline</i>
+            </div>
+            <div class="smcircur2 cirposit3"></div>
+            <div class="smcirtxt2 txtposit3">THE THIRD THING TO DO TODAY</div>
+            <div style="position:absolute; width: 24px; height:24px; top:651px; left:506px;">
+                <i class="material-icons material-play-color">play_circle_outline</i>
+            </div>
+            <div class="smcircur2 cirposit4"></div>
+            <div class="smcirtxt2 txtposit4">THE FORTH THING TO DO TODAY</div>
+            <div style="position:absolute; width: 24px; height:24px; top:692px; left:506px;">
+                <i class="material-icons material-play-color">play_circle_outline</i>
+            </div>
+            <div class="more">MORE</div>
+            <a class="funlist " href="# ">
+                <i class="material-icons ">list</i>
+            </a>
+            <a class="insertchart " href="# ">
+                <i class="material-icons ">insert_chart</i>
+            </a>
+            <a class="music " href="# ">
+                <i class="material-icons ">library_music</i>
+            </a>
+            <div class="pomo ">POMODORO</div>
         </div>
-        <div class="smcircur2 cirposit3"></div>
-        <div class="smcirtxt2 txtposit3">THE THIRD THING TO DO TODAY</div>
-        <div style="position:absolute; width: 24px; height:24px; top:651px; left:506px;">
-            <i class="material-icons material-play-color">play_circle_outline</i>
-        </div>
-        <div class="smcircur2 cirposit4"></div>
-        <div class="smcirtxt2 txtposit4">THE FORTH THING TO DO TODAY</div>
-        <div style="position:absolute; width: 24px; height:24px; top:692px; left:506px;">
-            <i class="material-icons material-play-color">play_circle_outline</i>
-        </div>
-        <div class="more">MORE</div>
-        <a class="funlist " href="# ">
-            <i class="material-icons ">list</i>
-        </a>
-        <a class="insertchart " href="# ">
-            <i class="material-icons ">insert_chart</i>
-        </a>
-        <a class="music " href="# ">
-            <i class="material-icons ">library_music</i>
-        </a>
-        <div class="pomo ">POMODORO</div>
     </div>
 
 </body>
