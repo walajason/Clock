@@ -5,46 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../Clock/stylesheets/all.scss">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylesheets/all.scss">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" href="../Clock/image/" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>番茄鐘</title>
 
     <style type="text/css">
         html {
             font-size: 10px;
         }
-
-        .mainbg {
-            position: absolute;
-            background-color: #FFEDF7;
-            width: 1280px;
-            height: 800px;
-        }
-
-        .bluebox {
+        
+        .bluebox2 {
             display: block;
             background-color: #003164;
             position: relative;
+            top: 0px;
+            left: 0px;
+            width: 1730px;
+            height: 800px;
+        }
+        
+        .mainbg {
+            position: absolute;
+            background-color: #FFEDF7;
+            top: 0px;
+            left: 450px;
+            width: 1280px;
+            height: 800px;
+        }
+        
+        .bluebox {
+            display: block;
+            background-color: #003164;
+            position: absolute;
             top: 0px;
             left: 830px;
             width: 450px;
             height: 800px;
         }
-
+        
         .inputbox {
             position: absolute;
             background-color: #FFFFFF;
@@ -60,7 +65,7 @@
             text-align: left;
             line-height: 57px;
         }
-
+        
         .plus {
             position: absolute;
             top: 61px;
@@ -70,7 +75,7 @@
             font-size: 3.2rem;
             color: #FF4384;
         }
-
+        
         .circur1 {
             position: absolute;
             width: 540px;
@@ -80,7 +85,7 @@
             border: 4px solid #FF4384;
             border-radius: 55%;
         }
-
+        
         .circur2 {
             position: absolute;
             width: 520px;
@@ -90,7 +95,11 @@
             background-color: #FF4384;
             border-radius: 55%;
         }
-
+        
+        .circur2:hover {
+            cursor: pointer;
+        }
+        
         .circur3 {
             position: absolute;
             width: 96px;
@@ -100,7 +109,7 @@
             background-color: white;
             border-radius: 55%;
         }
-
+        
         .ssmcircur {
             position: absolute;
             width: 12px;
@@ -110,7 +119,7 @@
             border: 1px solid #FF4384;
             border-radius: 55%;
         }
-
+        
         .smcircur1 {
             position: absolute;
             width: 48px;
@@ -120,7 +129,7 @@
             border: 2px solid black;
             border-radius: 55%;
         }
-
+        
         .smcirtxt1 {
             position: absolute;
             width: 348px;
@@ -135,7 +144,7 @@
             white-space: nowrap;
             /*變換大寫 THE FIRST THING TO DO 變換大寫 */
         }
-
+        
         .smcircur2 {
             position: absolute;
             width: 24px;
@@ -145,7 +154,7 @@
             border: 2px solid black;
             border-radius: 55%;
         }
-
+        
         .smcirtxt2 {
             position: absolute;
             width: 255px;
@@ -160,29 +169,29 @@
             white-space: nowrap;
             /*變換大寫 THE FIRST THING TO DO 變換大寫 */
         }
-
+        
         .cirposit3 {
             top: 651px;
             left: 85px;
         }
-
+        
         .cirposit4 {
             top: 692px;
             left: 85px;
         }
-
+        
         .txtposit3 {
             top: 654px;
             left: 116px;
             /*變換大寫 THE FIRST THING TO DO 變換大寫 */
         }
-
+        
         .txtposit4 {
             top: 695px;
             left: 116px;
             /*變換大寫 THE FIRST THING TO DO 變換大寫 */
         }
-
+        
         .square {
             position: absolute;
             width: 24px;
@@ -191,7 +200,7 @@
             left: 888px;
             background-color: white;
         }
-
+        
         .triangle {
             position: absolute;
             top: 375px;
@@ -203,7 +212,7 @@
             height: 0px;
             width: 0px;
         }
-
+        
         .funlist {
             position: absolute;
             top: 48px;
@@ -211,7 +220,7 @@
             width: 36px;
             height: 36px;
         }
-
+        
         .insertchart {
             position: absolute;
             top: 132px;
@@ -219,7 +228,7 @@
             width: 36px;
             height: 36px;
         }
-
+        
         .music {
             position: absolute;
             top: 216px;
@@ -227,7 +236,7 @@
             width: 36px;
             height: 36px;
         }
-
+        
         .material-icons {
             font-family: 'Material Icons';
             font-weight: normal;
@@ -251,12 +260,12 @@
             /* Support for IE. */
             font-feature-settings: 'liga';
         }
-
+        
         .material-play-color {
             color: black;
             white-space: nowrap;
         }
-
+        
         .pomo {
             position: absolute;
             width: 165px;
@@ -269,7 +278,7 @@
             font-size: 2.4rem;
             font-weight: bold;
         }
-
+        
         .bignumber {
             position: absolute;
             width: 454px;
@@ -281,15 +290,17 @@
             font-size: 12.6rem;
             font-weight: bold;
         }
-
+        
         .smcirtxt1:hover {
             text-transform: lowercase;
+            cursor: pointer;
         }
-
+        
         .smcirtxt2:hover {
             text-transform: lowercase;
+            cursor: pointer;
         }
-
+        
         .more {
             position: absolute;
             width: 44px;
@@ -301,79 +312,76 @@
             font-size: 1.6rem;
             font-weight: bold;
         }
-
+        
         .more:hover {
             text-transform: lowercase;
         }
-
+        
         .animat {
+            animation-play-state: running;
             animation: twinkling 0.3s infinite ease-in-out;
             -webkit-animation: twinkling 5s infinite ease-in-out;
         }
-
+        
         @keyframes twinkling {
-
             /*透明度由0到1*/
             0% {
                 opacity: 0;
                 /*透明度為0*/
             }
-
             25% {
                 opacity: 0.25;
                 /*透明度為1*/
-
             }
-
             75% {
                 opacity: 0.75;
                 /*透明度為1*/
-
             }
-
             100% {
                 opacity: 1;
                 /*透明度為1*/
-
             }
         }
-
+        
         @-webkit-keyframes twinkling {
-
             /*透明度由0到1*/
             0% {
                 opacity: 0;
                 /*透明度為0*/
             }
-
             25% {
                 opacity: 0.25;
                 /*透明度為1*/
-
             }
-
             75% {
                 opacity: 0.75;
                 /*透明度為1*/
-
             }
-
             100% {
                 opacity: 1;
                 /*透明度為1*/
-
             }
         }
     </style>
     <script language="JavaScript">
+        var audio;
+        var songs = new Array(5);
+        songs[1] = "./image/How_it_Began.mp3";
+        songs[2] = "./image/Liberation.mp3";
+        songs[3] = "./image/Safety_Net.mp3";
+        songs[4] = "./image/Tupelo_Train.mp3";
+
         function ShowTime() {
             var NowDate = new Date();
             var h = NowDate.getHours();
             var m = NowDate.getMinutes();
             var s = NowDate.getSeconds();
+            //指定物件給audio
+            audio = document.getElementById("audio");
             document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
             setTimeout('ShowTime()', 1000);
         }
+
         function paddingLeft(str, lenght) {
             var mStr = String(str);
             if (mStr.length < lenght)
@@ -384,55 +392,80 @@
         /*https://www.youtube.com/audiolibrary/soundeffects?ar=3*/
         function showanimt() {
             var obj = document.getElementById("circur2");
-            obj.className = obj.className + ' animat';
+            if (obj.style.animationPlayState == 'paused') {
+                showanimton();
+            } else {
+                showanimtoff();
+            }
+        }
+
+        function showanimtoff() {
+            var obj = document.getElementById("circur2");
+            obj.style.animationPlayState = 'paused';
+            audio.pause();
+        }
+
+        function showanimton() {
+            var obj = document.getElementById("circur2");
+            obj.style.animationPlayState = 'running';
+            audio.play();
+        }
+
+        function selectsong(no) {
+            audio.src = songs[no];
+            audio.play();
         }
     </script>
 </head>
 
 <body onload="ShowTime()">
-    <audio autoplay loop>
-        <source src="../Clock/image/Safety_Net.mp3" type="audio/ogg">
+    <audio id="audio" autoplay loop>
+        <source id="srcsource" src="./image/How_it_Began.mp3" type="audio/ogg">
     </audio>
-    <div class="mainbg">
-        <div class="bluebox"></div>
-        <div class="inputbox">ADD A NEW MISSION </div>
-        <div class="plus">+</div>
-        <div class="circur1"></div>
-        <div class="circur2" id="circur2" onclick="showanimt()"></div>
-        <div class="circur3"></div>
-        <div class="square"></div>
-        <div class="triangle"></div>
-        <!---->
-        <div class="ssmcircur"></div>
-        <div class="smcircur1"></div>
-        <div class="smcirtxt1">THE FIRST THING TO DO TODAY</div>
-        <div class="bignumber" id="showbox"></div>
-        <div class="smcircur2"></div>
-        <div class="smcirtxt2">THE SECOND THING TO DO TODAY</div>
-        <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
-            <i class="material-icons material-play-color">play_circle_outline</i>
+    <div class="bluebox2">
+        <div class="mainbg">
+            <div class="bluebox"></div>
+            <div class="inputbox">ADD A NEW MISSION </div>
+            <div class="plus">+</div>
+            <div class="circur1"></div>
+            <!---->
+            <div class="circur2 animat" id="circur2" onclick="showanimt()"></div>
+            <!---->
+            <div class="circur3"></div>
+            <div class="square"></div>
+            <div class="triangle"></div>
+            <!---->
+            <div class="ssmcircur"></div>
+            <div class="smcircur1"></div>
+            <div class="smcirtxt1" onclick="selectsong(1)">THE FIRST THING TO DO TODAY</div>
+            <div class="bignumber" id="showbox"></div>
+            <div class="smcircur2"></div>
+            <div class="smcirtxt2" onclick="selectsong(2)">THE SECOND THING TO DO TODAY</div>
+            <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
+                <i class="material-icons material-play-color">play_circle_outline</i>
+            </div>
+            <div class="smcircur2 cirposit3"></div>
+            <div class="smcirtxt2 txtposit3" onclick="selectsong(3)">THE THIRD THING TO DO TODAY</div>
+            <div style="position:absolute; width: 24px; height:24px; top:651px; left:506px;">
+                <i class="material-icons material-play-color">play_circle_outline</i>
+            </div>
+            <div class="smcircur2 cirposit4"></div>
+            <div class="smcirtxt2 txtposit4" onclick="selectsong(4)">THE FORTH THING TO DO TODAY</div>
+            <div style="position:absolute; width: 24px; height:24px; top:692px; left:506px;">
+                <i class="material-icons material-play-color">play_circle_outline</i>
+            </div>
+            <div class="more">MORE</div>
+            <a class="funlist " href="# ">
+                <i class="material-icons ">list</i>
+            </a>
+            <a class="insertchart " href="# ">
+                <i class="material-icons ">insert_chart</i>
+            </a>
+            <a class="music " href="# ">
+                <i class="material-icons ">library_music</i>
+            </a>
+            <div class="pomo ">POMODORO</div>
         </div>
-        <div class="smcircur2 cirposit3"></div>
-        <div class="smcirtxt2 txtposit3">THE THIRD THING TO DO TODAY</div>
-        <div style="position:absolute; width: 24px; height:24px; top:651px; left:506px;">
-            <i class="material-icons material-play-color">play_circle_outline</i>
-        </div>
-        <div class="smcircur2 cirposit4"></div>
-        <div class="smcirtxt2 txtposit4">THE FORTH THING TO DO TODAY</div>
-        <div style="position:absolute; width: 24px; height:24px; top:692px; left:506px;">
-            <i class="material-icons material-play-color">play_circle_outline</i>
-        </div>
-        <div class="more">MORE</div>
-        <a class="funlist " href="# ">
-            <i class="material-icons ">list</i>
-        </a>
-        <a class="insertchart " href="# ">
-            <i class="material-icons ">insert_chart</i>
-        </a>
-        <a class="music " href="# ">
-            <i class="material-icons ">library_music</i>
-        </a>
-        <div class="pomo ">POMODORO</div>
     </div>
 
 </body>
