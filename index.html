@@ -365,12 +365,18 @@
     </style>
     <script language="JavaScript">
         var audio;
+        var songs = new Array(5);
+        songs[1] = "./image/How_it_Began.mp3";
+        songs[2] = "./image/Liberation.mp3";
+        songs[3] = "./image/Safety_Net.mp3";
+        songs[4] = "./image/Tupelo_Train.mp3";
 
         function ShowTime() {
             var NowDate = new Date();
             var h = NowDate.getHours();
             var m = NowDate.getMinutes();
             var s = NowDate.getSeconds();
+            //指定物件給audio
             audio = document.getElementById("audio");
             document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
             setTimeout('ShowTime()', 1000);
@@ -404,12 +410,17 @@
             obj.style.animationPlayState = 'running';
             audio.play();
         }
+
+        function selectsong(no) {
+            audio.src = songs[no];
+            audio.play();
+        }
     </script>
 </head>
 
 <body onload="ShowTime()">
     <audio id="audio" autoplay loop>
-        <source src="./image/How_it_Began.mp3" type="audio/ogg">
+        <source id="srcsource" src="./image/How_it_Began.mp3" type="audio/ogg">
     </audio>
     <div class="bluebox2">
         <div class="mainbg">
@@ -426,20 +437,20 @@
             <!---->
             <div class="ssmcircur"></div>
             <div class="smcircur1"></div>
-            <div class="smcirtxt1">THE FIRST THING TO DO TODAY</div>
+            <div class="smcirtxt1" onclick="selectsong(1)">THE FIRST THING TO DO TODAY</div>
             <div class="bignumber" id="showbox"></div>
             <div class="smcircur2"></div>
-            <div class="smcirtxt2">THE SECOND THING TO DO TODAY</div>
+            <div class="smcirtxt2" onclick="selectsong(2)">THE SECOND THING TO DO TODAY</div>
             <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
                 <i class="material-icons material-play-color">play_circle_outline</i>
             </div>
             <div class="smcircur2 cirposit3"></div>
-            <div class="smcirtxt2 txtposit3">THE THIRD THING TO DO TODAY</div>
+            <div class="smcirtxt2 txtposit3" onclick="selectsong(3)">THE THIRD THING TO DO TODAY</div>
             <div style="position:absolute; width: 24px; height:24px; top:651px; left:506px;">
                 <i class="material-icons material-play-color">play_circle_outline</i>
             </div>
             <div class="smcircur2 cirposit4"></div>
-            <div class="smcirtxt2 txtposit4">THE FORTH THING TO DO TODAY</div>
+            <div class="smcirtxt2 txtposit4" onclick="selectsong(4)">THE FORTH THING TO DO TODAY</div>
             <div style="position:absolute; width: 24px; height:24px; top:692px; left:506px;">
                 <i class="material-icons material-play-color">play_circle_outline</i>
             </div>
