@@ -213,6 +213,10 @@
             width: 0px;
         }
         
+        .triangle:hover {
+            cursor: pointer;
+        }
+        
         .funlist {
             position: absolute;
             top: 48px;
@@ -318,7 +322,7 @@
         }
         
         .animat {
-            animation-play-state: running;
+            animation-play-state: paused;
             animation: twinkling 0.3s infinite ease-in-out;
             -webkit-animation: twinkling 5s infinite ease-in-out;
         }
@@ -363,62 +367,9 @@
             }
         }
     </style>
-    <script language="JavaScript">
-        var audio;
-        var songs = new Array(5);
-        songs[1] = "./How_it_Began.mp3";
-        songs[2] = "./Liberation.mp3";
-        songs[3] = "./Safety_Net.mp3";
-        songs[4] = "./Tupelo_Train.mp3";
-
-        function ShowTime() {
-            var NowDate = new Date();
-            var h = NowDate.getHours();
-            var m = NowDate.getMinutes();
-            var s = NowDate.getSeconds();
-            //指定物件給audio
-            audio = document.getElementById("audio");
-            document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
-            setTimeout('ShowTime()', 1000);
-        }
-
-        function paddingLeft(str, lenght) {
-            var mStr = String(str);
-            if (mStr.length < lenght)
-                return "0" + mStr;
-            else
-                return mStr;
-        }
-        /*https://www.youtube.com/audiolibrary/soundeffects?ar=3*/
-        function showanimt() {
-            var obj = document.getElementById("circur2");
-            if (obj.style.animationPlayState == 'paused') {
-                showanimton();
-            } else {
-                showanimtoff();
-            }
-        }
-
-        function showanimtoff() {
-            var obj = document.getElementById("circur2");
-            obj.style.animationPlayState = 'paused';
-            audio.pause();
-        }
-
-        function showanimton() {
-            var obj = document.getElementById("circur2");
-            obj.style.animationPlayState = 'running';
-            audio.play();
-        }
-
-        function selectsong(no) {
-            audio.src = songs[no];
-            audio.play();
-        }
-    </script>
 </head>
 
-<body onload="ShowTime()">
+<body onload="initvalue(25*60)">
     <audio id="audio" autoplay loop>
         <source id="srcsource" src="./How_it_Began.mp3" type="audio/ogg">
     </audio>
@@ -429,16 +380,16 @@
             <div class="plus">+</div>
             <div class="circur1"></div>
             <!---->
-            <div class="circur2 animat" id="circur2" onclick="showanimt()"></div>
+            <div class="circur2" id="circur2" onclick="showanimt()"></div>
             <!---->
             <div class="circur3"></div>
             <div class="square"></div>
-            <div class="triangle"></div>
+            <div class="triangle" onclick="CoundDown()"></div>
             <!---->
             <div class="ssmcircur"></div>
             <div class="smcircur1"></div>
             <div class="smcirtxt1" onclick="selectsong(1)">THE FIRST THING TO DO TODAY</div>
-            <div class="bignumber" id="showbox"></div>
+            <div class="bignumber" id="showbox">25:00</div>
             <div class="smcircur2"></div>
             <div class="smcirtxt2" onclick="selectsong(2)">THE SECOND THING TO DO TODAY</div>
             <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
@@ -467,7 +418,84 @@
             <div class="pomo ">POMODORO</div>
         </div>
     </div>
+    <script>
+        var audio;
+        var songs = new Array(5);
+        var secs; //時間倒數
+        function initvalue(cdsec) {
+            secs = cdsec;
+            songs[1] = "./How_it_Began.mp3";
+            songs[2] = "./Liberation.mp3";
+            songs[3] = "./Safety_Net.mp3";
+            songs[4] = "./Tupelo_Train.mp3";
+            audio = document.getElementById("audio"); /*指定物件給audio */
+            audio.pause();
+            showclock();
+        }
 
+        function CoundDown() {
+            var h = Math.floor(secs / 3600);
+            var m = Math.floor((secs - (h * 3600)) / 60);
+            var s = parseInt(secs - (h * 3600) - (m * 60));
+            if (secs == 0) {
+                showanimt();
+            } else {
+                if (h == 0) {
+                    document.getElementById('showbox').innerHTML = '00' + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
+                } else {
+                    document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
+                }
+                setTimeout('CoundDown()', 1000);
+                //secs -= 1000;
+            }
+
+            function showclock() {
+                var NowDate = new Date();
+                var h = NowDate.getHours(NowDate);
+                var m = NowDate.getMinutes(NowDate);
+                var s = NowDate.getSeconds(NowDate);
+                document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
+                setTimeout('ShowTime()', 1000);
+            }
+
+            function paddingLeft(mStr, lenght) {
+                if (mStr.length < lenght)
+                    if (mstr.lenght == 0) {
+                        return "00";
+                    } else {
+                        return "0" + mStr;
+                    }
+                else {
+                    return mStr;
+                }
+            }
+            //*https://www.youtube.com/audiolibrary/soundeffects?ar=3*/
+            function showanimt() {
+                var obj = document.getElementById("circur2");
+                if (obj.style.animationPlayState == 'paused') {
+                    showanimton();
+                } else {
+                    showanimtoff();
+                }
+            }
+
+            function showanimtoff() {
+                var obj = document.getElementById("circur2");
+                obj.style.animationPlayState = 'paused';
+                audio.pause();
+            }
+
+            function showanimton() {
+                var obj = document.getElementById("circur2");
+                obj.style.animationPlayState = 'running';
+                audio.play();
+            }
+
+            function selectsong(no) {
+                audio.src = songs[no];
+                audio.play();
+            }
+    </script>
 </body>
 
 </html>
