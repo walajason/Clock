@@ -93,6 +93,7 @@
             top: 145px;
             left: 574px;
             background-color: #FF4384;
+            /* #FF4384;*/
             border-radius: 55%;
         }
         
@@ -128,6 +129,7 @@
             left: 85px;
             border: 2px solid black;
             border-radius: 55%;
+            background-color: transparent;
         }
         
         .smcirtxt1 {
@@ -202,15 +204,55 @@
         }
         
         .triangle {
+            display: inline;
             position: absolute;
             top: 375px;
             left: 816px;
             border-color: transparent transparent transparent #FF4384;
             border-style: solid solid solid solid;
             border-width: 25px;
-            /* 設定 width、height 可更好理解原理 */
+            /* 設定 width、height 可更好理解原理
             height: 0px;
-            width: 0px;
+            width: 0px;*/
+        }
+        
+        .triangle:hover {
+            cursor: pointer;
+        }
+        
+        .playstop_container {
+            display: none;
+            position: absolute;
+            top: 352px;
+            left: 777px;
+            background-color: white;
+            /* #FF4384;*/
+            width: 96px;
+            height: 96px;
+        }
+        
+        .longsquare1 {
+            display: none;
+            position: absolute;
+            width: 8px;
+            height: 28px;
+            top: 387px;
+            left: 810px;
+            background-color: #FF4384;
+        }
+        
+        .longsquare2 {
+            display: none;
+            position: absolute;
+            width: 8px;
+            height: 28px;
+            top: 387px;
+            left: 830px;
+            background-color: #FF4384;
+        }
+        
+        .playstop_container:hover {
+            cursor: pointer;
         }
         
         .funlist {
@@ -318,27 +360,27 @@
         }
         
         .animat {
-            animation-play-state: running;
             animation: twinkling 0.3s infinite ease-in-out;
             -webkit-animation: twinkling 5s infinite ease-in-out;
+            animation-play-state: paused;
         }
         
         @keyframes twinkling {
             /*透明度由0到1*/
             0% {
-                opacity: 0;
+                opacity: 1;
                 /*透明度為0*/
             }
             25% {
-                opacity: 0.25;
-                /*透明度為1*/
-            }
-            75% {
                 opacity: 0.75;
                 /*透明度為1*/
             }
+            75% {
+                opacity: 0.25;
+                /*透明度為1*/
+            }
             100% {
-                opacity: 1;
+                opacity: 0;
                 /*透明度為1*/
             }
         }
@@ -363,31 +405,67 @@
             }
         }
     </style>
-    <script language="JavaScript">
+    <script type="text/javascript">
         var audio;
         var songs = new Array(5);
-        songs[1] = "./How_it_Began.mp3";
-        songs[2] = "./Liberation.mp3";
-        songs[3] = "./Safety_Net.mp3";
-        songs[4] = "./Tupelo_Train.mp3";
+        var secs; //時間倒數
+        var mclock;
+        var mcountdown;
 
-        function ShowTime() {
-            var NowDate = new Date();
-            var h = NowDate.getHours();
-            var m = NowDate.getMinutes();
-            var s = NowDate.getSeconds();
-            //指定物件給audio
-            audio = document.getElementById("audio");
-            document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
-            setTimeout('ShowTime()', 1000);
+        function initvalue(cdsec) {
+            secs = cdsec;
+            songs[1] = "./How_it_Began.mp3";
+            songs[2] = "./Liberation.mp3";
+            songs[3] = "./Safety_Net.mp3";
+            songs[4] = "./Tupelo_Train.mp3";
+            audio = document.getElementById("audio"); /*指定物件給audio */
+            audio.pause();
+            show_clock();
         }
 
-        function paddingLeft(str, lenght) {
-            var mStr = String(str);
-            if (mStr.length < lenght)
-                return "0" + mStr;
-            else
-                return mStr;
+        function CoundDown() {
+            var h = Math.floor(secs / 3600);
+            var m = Math.floor((secs - (h * 3600)) / 60);
+            var s = parseInt(secs - (h * 3600) - (m * 60));
+            clearTimeout(mclock);
+            triangle();
+            if (secs == 0) {
+                clearTimeout(mcountdown);
+                showanimton();
+                audio.play();
+                playstop_container();
+                show_clock();
+            } else {
+                if (h == 0) {
+                    document.getElementById('showbox').innerHTML = '00' + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
+                } else {
+                    document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
+                }
+                mcountdown = setTimeout('CoundDown()', 1000);
+                secs -= 1;
+            }
+
+        }
+
+        function show_clock() {
+            var NowDate = new Date();
+            var h = NowDate.getHours(NowDate);
+            var m = NowDate.getMinutes(NowDate);
+            var s = NowDate.getSeconds(NowDate);
+            document.getElementById('showbox').innerHTML = paddingLeft(h, 2) + ':' + paddingLeft(m, 2) + ':' + paddingLeft(s, 2);
+            mclock = setTimeout('show_clock()', 1000);
+        }
+
+        function paddingLeft(mstr, lenght) {
+            if (mstr < 10) {
+                if (mstr == 0) { //時間為0時 length 無法辦別出來
+                    return "00";
+                } else {
+                    return "0" + mstr;
+                }
+            } else {
+                return mstr;
+            }
         }
         /*https://www.youtube.com/audiolibrary/soundeffects?ar=3*/
         function showanimt() {
@@ -410,15 +488,57 @@
             obj.style.animationPlayState = 'running';
             audio.play();
         }
-
+        //改變小圈圈選歌後的顏色
         function selectsong(no) {
             audio.src = songs[no];
-            audio.play();
+            audio.pause();
+            switch (no) {
+                case 1:
+                    document.getElementById('smcircur1').style.backgroundColor = 'red';
+                    document.getElementById('smcircur2').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur3').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur4').style.backgroundColor = 'transparent';
+                    break;
+                case 2:
+                    document.getElementById('smcircur4').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur2').style.backgroundColor = 'red';
+                    document.getElementById('smcircur3').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur4').style.backgroundColor = 'transparent';
+                    break;
+                case 3:
+                    document.getElementById('smcircur1').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur2').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur3').style.backgroundColor = 'red';
+                    document.getElementById('smcircur4').style.backgroundColor = 'transparent';
+                    break;
+                case 4:
+                    document.getElementById('smcircur1').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur2').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur3').style.backgroundColor = 'transparent';
+                    document.getElementById('smcircur4').style.backgroundColor = 'red';
+                    break;
+            }
+            //audio.play();
+        }
+        //改變display=none  inline
+        function triangle() {
+            document.getElementById('triangle').style.display = 'none';
+            document.getElementById('playstop_container').style.display = 'inline';
+            document.getElementById('longsquare1').style.display = 'inline';
+            document.getElementById('longsquare2').style.display = 'inline';
+            //document.addEventListener('playstop_container', playstop_container());
+        }
+
+        function playstop_container() {
+            document.getElementById('triangle').style.display = 'inline';
+            document.getElementById('playstop_container').style.display = 'none';
+            document.getElementById('longsquare1').style.display = 'none';
+            document.getElementById('longsquare2').style.display = 'none';
         }
     </script>
 </head>
 
-<body onload="ShowTime()">
+<body onload="initvalue(30*60)">
     <audio id="audio" autoplay loop>
         <source id="srcsource" src="./How_it_Began.mp3" type="audio/ogg">
     </audio>
@@ -433,23 +553,27 @@
             <!---->
             <div class="circur3"></div>
             <div class="square"></div>
-            <div class="triangle"></div>
+            <div class="triangle" id="triangle" onclick="CoundDown()"></div>
+            <!--playstop_container  longsquare1-->
+            <div class="playstop_container" id="playstop_container" onlick="playstop_container()"></div>
+            <div class="longsquare1" id="longsquare1"></div>
+            <div class="longsquare2" id="longsquare2"></div>
             <!---->
             <div class="ssmcircur"></div>
-            <div class="smcircur1"></div>
+            <div class="smcircur1" id="smcircur1"></div>
             <div class="smcirtxt1" onclick="selectsong(1)">THE FIRST THING TO DO TODAY</div>
-            <div class="bignumber" id="showbox"></div>
-            <div class="smcircur2"></div>
+            <div class="bignumber" id="showbox">25:00</div>
+            <div class="smcircur2" id="smcircur2"></div>
             <div class="smcirtxt2" onclick="selectsong(2)">THE SECOND THING TO DO TODAY</div>
             <div style="position:absolute; width: 24px; height:24px; top:610px; left:506px;">
                 <i class="material-icons material-play-color">play_circle_outline</i>
             </div>
-            <div class="smcircur2 cirposit3"></div>
+            <div class="smcircur2 cirposit3" id="smcircur3"></div>
             <div class="smcirtxt2 txtposit3" onclick="selectsong(3)">THE THIRD THING TO DO TODAY</div>
             <div style="position:absolute; width: 24px; height:24px; top:651px; left:506px;">
                 <i class="material-icons material-play-color">play_circle_outline</i>
             </div>
-            <div class="smcircur2 cirposit4"></div>
+            <div class="smcircur2 cirposit4" id="smcircur4"></div>
             <div class="smcirtxt2 txtposit4" onclick="selectsong(4)">THE FORTH THING TO DO TODAY</div>
             <div style="position:absolute; width: 24px; height:24px; top:692px; left:506px;">
                 <i class="material-icons material-play-color">play_circle_outline</i>
@@ -467,7 +591,6 @@
             <div class="pomo ">POMODORO</div>
         </div>
     </div>
-
 </body>
 
 </html>
