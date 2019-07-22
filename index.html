@@ -76,6 +76,10 @@
             color: #FF4384;
         }
         
+        .plus:hover {
+            cursor: pointer;
+        }
+        
         .circur1 {
             position: absolute;
             width: 540px;
@@ -404,6 +408,49 @@
                 /*透明度為1*/
             }
         }
+        
+        .dropbtn {
+            color: white;
+            font-size: 35px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #FF4384;
+        }
+        
+        .plus {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: #f9f9f9;
+            min-width: 100px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dropdown-content ul {
+            color: black;
+            padding: 2px 5px;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            margin: 0px
+        }
+        
+        .dropdown-content ul:hover {
+            background-color: #FFEDF7;
+        }
+        
+        .show {
+            display: block;
+        }
     </style>
     <script type="text/javascript">
         var audio;
@@ -480,7 +527,7 @@
             var obj = document.getElementById("circur2");
             obj.style.animationPlayState = 'paused';
             audio.pause();
-            clearTimeout(mclock);
+            clearTimeout(mcountdown);
             playstop_container();
         }
 
@@ -536,10 +583,33 @@
             document.getElementById('longsquare1').style.display = 'none';
             document.getElementById('longsquare2').style.display = 'none';
         }
+        // Get the button, and when the user clicks on it, execute myFunction
+        /*document.getElementById("myBtn").onclick = function() {
+            myFunction()
+        };*/
+
+        // myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content
+        function myFunction() {
+            //document.getElementById("myDropdown").classList.toggle("show");
+            document.getElementById("myDropdown").style.display = 'block';
+        }
+
+        function timer(no) {
+            //dropdown-content
+            if (no == 0) {
+                showanimtoff();
+                show_clock();
+            } else {
+                secs = no * 60;
+                CoundDown();
+            }
+            document.getElementById("myDropdown").style.display = 'none';
+
+        }
     </script>
 </head>
 
-<body onload="initvalue(0.5*60)">
+<body onload="initvalue(30*60)">
     <audio id="audio" autoplay loop>
         <source id="srcsource" src="./How_it_Began.mp3" type="audio/ogg">
     </audio>
@@ -547,7 +617,18 @@
         <div class="mainbg">
             <div class="bluebox"></div>
             <div class="inputbox">ADD A NEW MISSION </div>
-            <div class="plus">+</div>
+            <!--<div class="plus">+</div>-->
+            <div class="plus">
+                <button id="myBtn" class="dropbtn" onclick="myFunction()">+</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <ul onclick="timer(50)">50</ul>
+                    <ul onclick="timer(30)">30</ul>
+                    <ul onclick="timer(20)">20</ul>
+                    <ul onclick="timer(10)">10</ul>
+                    <ul onclick="timer(5)">5</ul>
+                    <ul onclick="timer(0)">stop</ul>
+                </div>
+            </div>
             <div class="circur1"></div>
             <!---->
             <div class="circur2 animat" id="circur2" onclick="showanimt()"></div>

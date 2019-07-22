@@ -1,6 +1,3 @@
-Skip to content Search or jump to… Pull requests Issues Marketplace Explore @walajason 0 1 0 walajason/clock Code Issues 0 Pull requests 0 Projects 0 Wiki Security Insights Settings clock/index.html @walajason walajason Add files via upload d8f7920 2
-hours ago 596 lines (544 sloc) 19.6 KB
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +6,7 @@ hours ago 596 lines (544 sloc) 19.6 KB
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./stylesheets/all.scss">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
     <link rel="icon" href="../Clock/image/" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -77,6 +74,10 @@ hours ago 596 lines (544 sloc) 19.6 KB
             height: 24px;
             font-size: 3.2rem;
             color: #FF4384;
+        }
+        
+        .plus:hover {
+            cursor: pointer;
         }
         
         .circur1 {
@@ -412,8 +413,8 @@ hours ago 596 lines (544 sloc) 19.6 KB
         var audio;
         var songs = new Array(5);
         var secs; //時間倒數
-        var mclock;
-        var mcountdown;
+        var mclock; //show_clock() 時鐘物件
+        var mcountdown; //CoundDown()倒數計時物件
 
         function initvalue(cdsec) {
             secs = cdsec;
@@ -483,6 +484,8 @@ hours ago 596 lines (544 sloc) 19.6 KB
             var obj = document.getElementById("circur2");
             obj.style.animationPlayState = 'paused';
             audio.pause();
+            clearTimeout(mclock);
+            playstop_container();
         }
 
         function showanimton() {
@@ -528,7 +531,7 @@ hours ago 596 lines (544 sloc) 19.6 KB
             document.getElementById('playstop_container').style.display = 'inline';
             document.getElementById('longsquare1').style.display = 'inline';
             document.getElementById('longsquare2').style.display = 'inline';
-            //document.addEventListener('playstop_container', playstop_container());
+            //document.getElementById('playstop_container').addEventListener('click', playstop_container());
         }
 
         function playstop_container() {
@@ -540,7 +543,7 @@ hours ago 596 lines (544 sloc) 19.6 KB
     </script>
 </head>
 
-<body onload="initvalue(30*60)">
+<body onload="initvalue(25*60)">
     <audio id="audio" autoplay loop>
         <source id="srcsource" src="./How_it_Began.mp3" type="audio/ogg">
     </audio>
@@ -555,6 +558,7 @@ hours ago 596 lines (544 sloc) 19.6 KB
             <!---->
             <div class="circur3"></div>
             <div class="square"></div>
+            <!---->
             <div class="triangle" id="triangle" onclick="CoundDown()"></div>
             <!--playstop_container  longsquare1-->
             <div class="playstop_container" id="playstop_container" onlick="playstop_container()"></div>
